@@ -62,7 +62,7 @@ public class App
        // Zad 2. Odkurzacz do spacji: napisz program, który oczyszcza dany tekst ze wszystkich nadmiarowych spacji, pozostawiając tylko pojedyncze między słowami.
         // Np Ala   ma           kota                 -> Ala ma kota
         Scanner scan = new Scanner(System.in);
-        System.out.println(" Napisz zdanie zawierające wiele spacji a ja oczyszcze dany tekst ze wszystkich nadmiarowych spacji, pozostawiając tylko pojedyncze między słowami. ");
+        System.out.println(" Napisz pangramPhrase zawierające wiele spacji a ja oczyszcze dany tekst ze wszystkich nadmiarowych spacji, pozostawiając tylko pojedyncze między słowami. ");
        String phrase = scan.nextLine();
 
        //tworzymy wynikowy string
@@ -115,7 +115,7 @@ public class App
         // heterogram
         scan2 = new Scanner(System.in);
         System.out.println("Napisz string a ja sprawdze, czy jest heterogramem");
-        String heterogramResponse = scan.nextLine(); //"Mateusz"
+        String heterogramResponse = scan2.nextLine(); //"Mateusz"
         boolean isHeterogram = true;
 //
         for (Integer i = 0; i < heterogramResponse.length(); i++) {
@@ -139,7 +139,34 @@ public class App
         } else {
             System.out.println(heterogramResponse + " is NOT a heterogram");
         }
-        
+
+        scan2 = new Scanner(System.in);
+        System.out.println("Napisz string a ja sprawdze, czy jest pangramem");
+        String pangramPhrase = scan2.nextLine(); //"The quick brown fox jumps over a lazy dog"
+
+        //tworze tablice 26
+        Character[] alphabet = new Character[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+        pangramPhrase = pangramPhrase.toLowerCase().replace(" ", "");
+        System.out.println(pangramPhrase);
+        boolean isPanagram = true;
+        Integer counter = 0;
+
+        for (Integer i = 0; i<alphabet.length;i++){
+            if(!pangramPhrase.contains(alphabet[i].toString())){
+                System.out.println("nie zawiera!");
+                isPanagram = false;
+                break;
+            }
+        }
+        if(isPanagram){
+            System.out.println("The sentence is a pangramem");
+        }
+        else{
+            System.out.println("The sentence is NOT a pangramem");
+        }
+
 
     }
+
 }
