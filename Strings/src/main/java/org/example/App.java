@@ -85,5 +85,61 @@ public class App
         // heterogramem (żadna litera się nie powtarza, np Mateusz),
         // pangramem (zawiera wszystkie litery alfabetu łacińskiego, np The quick brown fox jumps over a lazy dog),
         // oraz, czy dane dwa stringi są anagramami (składają się z tych samych liter, np Tom Marvolo Riddle - I am Lord Voldemort)
+
+        //palindrom
+        Scanner scan2 = new Scanner(System.in);
+        System.out.println("Napisz string a ja sprawdze, czy jest palindromem");
+        String userResponse = scan.nextLine(); //"Kobyła ma mały bok"
+
+        String formattedUserResponse = userResponse.toLowerCase().replace(" ", "");
+        String reverse = "";
+        for (Integer i = formattedUserResponse.length() - 1; i >= 0; i--) {
+            reverse += formattedUserResponse.charAt(i);//to ten sam zapis co reverse =reverse+ userResponse.charAt(i);
+        }
+        System.out.println(reverse);
+
+        boolean isPalindrome = true;
+        for (Integer i = 0; i < formattedUserResponse.length(); i++) {
+            if (formattedUserResponse.charAt(i) != reverse.charAt(i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        String messageFormatted = String.format("%s", userResponse);
+        if (isPalindrome) {
+            System.out.println(messageFormatted + " is a palindrome");
+        } else {
+            System.out.println(messageFormatted + "is NOT a palindrome");
+        }
+
+        // heterogram
+        scan2 = new Scanner(System.in);
+        System.out.println("Napisz string a ja sprawdze, czy jest heterogramem");
+        String heterogramResponse = scan.nextLine(); //"Mateusz"
+        boolean isHeterogram = true;
+//
+        for (Integer i = 0; i < heterogramResponse.length(); i++) {
+            Character zero = heterogramResponse.charAt(i);
+            Character chariIteration;
+            for (Integer j = 0; j < heterogramResponse.length(); j++) {
+                if (j == i) {
+                    continue;
+                } else {
+                    chariIteration = heterogramResponse.charAt(j);
+
+                }
+                if (zero.equals(chariIteration)) {
+                    isHeterogram = false;
+                    break;
+                }
+            }
+        }
+        if (isHeterogram) {
+            System.out.println(heterogramResponse + " is heterogram");
+        } else {
+            System.out.println(heterogramResponse + " is NOT a heterogram");
+        }
+        
+
     }
 }
